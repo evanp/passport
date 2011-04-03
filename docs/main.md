@@ -1,2 +1,2 @@
-The main module is a program that creates a widget.  When a user clicks on
-the widget, the program loads the mozilla.org website in a new tab.
+This module adds a passport object to window.navigator. This object
+can be used to retrieve identity URIs from the user.

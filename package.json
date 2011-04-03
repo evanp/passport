@@ -1,8 +1,9 @@
 {
-  "name": "passport",
-  "fullName": "passport",
-  "description": "a basic add-on",
-  "author": "",
-  "license": "MPL 1.1/GPL 2.0/LGPL 2.1",
-  "version": "0.1"
+    "name": "passport", 
+    "license": "Apache 2.0", 
+    "author": "Evan Prodromou", 
+    "version": "0.1", 
+    "fullName": "passport", 
+    "id": "jid0-rIypa1eAYZGA21XlBT7W1nncEaU", 
+    "description": "Implements window.navigator.passport"
 }

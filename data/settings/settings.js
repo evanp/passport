@@ -1,7 +1,13 @@
 // Set up the selector, and stuff.
 
-var identityList = document.getElementById('identity-list');
-var identityText = document.getElementById('identity-text');
+function onChangeIdentity()
+{
+    if (identityList.value) {
+	deleteButton.disabled = false;
+    } else {
+	deleteButton.disabled = true;
+    }
+}
 
 function addIdentityToList(identity)
 {
@@ -9,6 +15,19 @@ function addIdentityToList(identity)
     option.setAttribute('value', identity);
     option.appendChild(document.createTextNode(identity));
     identityList.appendChild(option);
+}
+
+function removeIdentityFromList(identity)
+{
+    var options = identityList.getElementsByTagName('option');
+    for (var i = 0; i < options.length; i++)
+    {
+	if (options[i].value == identity) {
+	    identityList.removeChild(options[i]);
+	    return true;
+	}
+    }
+    return false;
 }
 
 function haveIdentityInList(identity)
@@ -50,8 +69,33 @@ function onAddIdentity() {
     }
 }
 
+function onDeleteIdentity() {
+    var identity = identityList.value;
+    if (identity) {
+	removeIdentityFromList(identity);
+	deleteButton.disabled = true;
+	postMessage({type: 'deleteidentity',
+		     identity: identity});
+    }
+}
+
 var addButton = document.getElementById('add-button');
 
 if (addButton) {
     addButton.onclick = onAddIdentity;
 }
+
+var deleteButton = document.getElementById('delete-button');
+
+if (deleteButton) {
+    deleteButton.onclick = onDeleteIdentity;
+}
+
+var identityList = document.getElementById('identity-list');
+
+if (identityList)
+{
+    identityList.onchange = onChangeIdentity;
+}
+
+var identityText = document.getElementById('identity-text');
